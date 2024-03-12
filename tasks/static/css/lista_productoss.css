@@ -1,0 +1,83 @@
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 15px;
+    
+}
+
+h1 {
+    text-align: left;
+    font-size: 2em;
+    color: #7689debb;
+    text-shadow: 4px 3px 5px rgba(55, 52, 52, 0.2);
+    animation: shake 0.5s ease-in-out infinite; /* Animación de temblor */
+    }
+    
+@keyframes shake {
+    10%, 100% {
+    transform: translateX(0);
+    }
+    40% {
+    transform: translateX(-5px);
+    }
+    }
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+th {
+    background-color: #f2f2f2;
+    
+}
+
+/* Estilos para los botones en las celdas de la columna de Acciones */
+td form {
+    display: inline-block;
+    margin-right: 5px;
+    
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #aec9e7;
+    color: white;
+    border: none;
+    border-radius: px;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: #aec9e7;
+}
+
+.class-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buscar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px; /* Añadido para separar el formulario de la tabla */
+}
+
+.buscar form {
+    margin-right: 20px; /* Añadido un margen a la derecha para separar el formulario del borde de la página */
+}

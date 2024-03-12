@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/carrito.js' %}"></script>
+
+    <title>Login Proyecto</title>
+
+    {% block css %}
+    {% endblock %}
+
+    {% block img %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <title>Tienda Online</title>
+    </head>
+    <body>
+    
+      <header>
+        <div class="logo">
+          <img width="150" src="{% static 'css/logo_transparent.png' %}" >
+        </div>
+        <nav>
+          <ul>
+            {% if user.is_authenticated %}
+              <li><a href="/agregar_producto/">Agregar productos</a></li>
+              <li><a href="/productos/">Productos agregados</a></li>
+              <li><a href="/clientes">Clientes</a></li>
+              <li><a href="/carrito">Carrito </a></li>
+              <li><a href="/logout">Salir</a></li>
+            {% else %}
+              <li><a href="/iniciarSesion">Iniciar sesión</a></li>
+            {% endif %}
+    
+            {% if user.is_superuser %}
+              <li><a href="/signup">Registrar usuario</a></li>
+            {% endif %}
+          </ul>
+        </nav>
+      </header>
+    
+
+    
+    </body>
+    </html>
+    
+
+
+
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+
+</html>

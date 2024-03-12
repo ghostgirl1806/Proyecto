@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://kit.fontawesome.com/86ecebaeb6.js" crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <title>Menú con Inicio de Sesión</title>
+  {% block css %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% endblock %}
+</head>
+
+<body>
+  {% block content %}
+  <header>
+    <section id="header-top">
+      <aside>
+        <div class="logo">
+          {% block img %}
+          {% load static %}
+          <img width="150" src="{% static 'css/logo_transparent.png' %}">
+          {% endblock %}
+        </div>
+        <div class="search-container">
+          <form method="post" action="/carrito/">
+            {% csrf_token %}
+            <input type="text" name="nombre" placeholder="Buscar producto">
+            <button class="button">Buscar</button>
+          </form>
+        </div>
+      </aside>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li><a class="Agregar" href="/agregar_producto/">Agregar productos</a></li>
+          <li><a class="Productos" href="/productos/">Productos agregados</a></li>
+          <li><a class="Clientes" href="/clientes">Clientes</a></li>
+          <li><a class="Carrito" href="/carrito">Carrito </a></li>
+          <li><a class="Salir" href="/logout">Salir</a></li>
+          {% else %}
+          <li><a class="Iniciar" href="/iniciarSesion">Iniciar sesión</a></li>
+          {% endif %}
+
+          {% if user.is_superuser %}
+          <li><a href="/signup">Registrar usuario</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </section>
+    <section id="header-bottom"></section>
+  </header>
+  <main>
+    <aside>
+      <h1 id="categorias-title">Categorias</h1>
+      <div class="scrollable-div">
+        <ul class="categorias">
+          <li><i class="fa-solid fa-apple-whole fa-lg"></i><a class="frutas" href="#">Frutas y verduras</a></li>
+          <li><i class="fa-solid fa-cow fa-lg"></i><a class="lacteos" href="#">Lácteos y huevos</a></li>
+          <li><i class="fa-solid fa-bowl-rice fa-lg"></i><a class="arroz" href="#">Arroz y granos</a></li>
+          <li><i class="fa-solid fa-bottle-droplet fa-xl"></i><a class="aceites" href="#">Aceites y sal </a></li>
+          <li><i class="fa-solid fa-kitchen-set fa-lg"></i><a class="despensa" href="#">Despensa</a></li>
+          <li><i class="fa-solid fa-drumstick-bite fa-lg"></i><a class="pollo" href="#">Pollo, carne y pescado</a></li>
+          <li><i class="fa-solid fa-hotdog fa-lg"></i><a class="carnes" href="#">Carnes frías y embutidos</a></li>
+          <li><i class="fa-solid fa-jar fa-lg"></i><a class="sazonadores" href="#">Sazonadores y sopas</a></li>
+          <li><i class="fa-solid fa-bread-slice fa-lg"></i><a class="pan" href="#">Pan, galletas y arepas</a></li>
+          <li><i class="fa-solid fa-mug-saucer fa-lg"></i><a class="cafe" href="#">Café, té y chocolates</a></li>
+          <li><i class="fa-solid fa-cake-candles fa-lg"></i><a class="snacks" href="#">Snacks y tortas</a></li>
+          <li><i class="fa-solid fa-wine-bottle fa-lg"></i><a class="bebidas" href="#">Bebidas</a></li>
+          <li><i class="fa-solid fa-snowflake fa-lg"></i><a class="congelados" href="#">Congelados</a></li>
+          <li><i class="fa-solid fa-wine-glass fa-lg"></i><a class="licores" href="#">Licores</a></li>
+          <li><i class="fa-solid fa-spray-can-sparkles fa-lg"></i><a class="personal" href="#">Cuidado personal</a></li>
+          <li><i class="fa-solid fa-house fa-lg"></i><a class="hogar" href="#">Cuidado del hogar</a></li>
+          <li><i class="fa-solid fa-children fa-lg"></i><a class="bebes" href="#">Bebés</a></li>
+          <li><i class="fa-solid fa-paw fa-lg"></i><a class="mascotas" href="#">Mascotas</a></li>
+          </li>
+        </ul>
+
+      </div>
+    </aside>
+    <section class="home-cards-container">
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image{{producto.id}}"> </div>
+          <h1>Papaya x Unidad</h1>
+          <p>1.5 Kg, <br />
+            $7.100 <br />
+            Gramo a $ 4,73</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+      </div>
+      
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image2"> </div>
+          <h1>Banano (5 a 7 uds)</h1>
+          <p>
+            1 Kg<br />
+            $3.400 <br />
+            Gramo a $ 3,40</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image3"> </div>
+          <h1>Maracuya x 3-4 Und</h1>
+          <p>450 Gr<br />
+            $9.850<br />
+            Gramo a $ 21,89</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image4"> </div>
+          <h1>Aguacate 3 a 5 uds</h1>
+          <p>500 Gr<br />
+            $4.600<br />
+            Gramo a $ 9,20</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image5"> </div>
+          <h1>Limón 6 a 7 uds</h1>
+          <p>500 Gr<br />
+            $3.550<br />
+            Gramo a $ 6,50</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image6"> </div>
+          <h1>Ciruela bolsa 5 a 7 Und</h1>
+          <p>500 Gr<br />
+            $3.200 <br />
+            Gramo a $ 6,40</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image7"> </div>
+          <h1>lulo x Bandeja</h1>
+          <p>500 Gr<br />
+            $3.600<br />
+            Gramo a $ 7,20</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image8"> </div>
+          <h1>Arándanos</h1>
+          <p>125 Gr<br />
+            $6.650<br />
+            Gramo a $ 53,20</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image9"> </div>
+          <h1>Manzana Gala 5 uds</h1>
+          <p>550 Gr<br />
+            $10.150<br />
+            Gramo a $ 18,45</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image10"> </div>
+          <h1>Manzana Verde 6 Und</h1>
+          <p>700 Gr<br />
+            $13.000<br />
+            Gramo a $ 53,20</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image11"> </div>
+          <h1>Naranja para Jugo</h1>
+          <p>1.5 Kg<br />
+            $5.000<br />
+            Gramo a $ 3,33</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image12"> </div>
+          <h1>Piña x Unidad</h1>
+          <p>1.4 Kg<br />
+            $9.150<br />
+            Gramo a $ 6,54</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image13"> </div>
+          <h1> x Estuche</h1>
+          <p>300 Grr<br />
+            $4.700<br />
+            Gramo a $ 15,67</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image14"> </div>
+          <h1>Uva Isabella</h1>
+          <p>500 Gr<br />
+            $4.250<br />
+            Gramo a $ 8,50</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image15"> </div>
+          <h1>Uva Roja x Bandeja</h1>
+          <p>500 Gr<br />
+            $11.000<br />
+            Gramo a $ 22,00</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="wrapper">
+          <div class="banner-image16"> </div>
+          <h1>Durazno Bolsa 9 a 11 und</h1>
+          <p>1 Kg<br />
+            $9.750<br />
+            Gramo a $ 9,75</p>
+        </div>
+        <div class="button-wrapper">
+          <button class="btn fill">AGREGAR AL CARRITO</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  {% endblock %}
+</body>
+
+</html>

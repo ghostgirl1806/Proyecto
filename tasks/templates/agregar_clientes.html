@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar clientes</title>
+    {% extends 'base.html' %}
+</head>
+<body>
+    <h1>Agregar Nuevo clientes</h1> 
+
+{% block content %}
+
+    <form action="/agregar_clientes/" method="POST">
+        {% csrf_token %}
+        {{form}}
+
+        <button>
+            save
+        </button>
+
+    </form>
+{% endblock %}    
+</body>
+</html>

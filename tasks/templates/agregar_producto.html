@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Producto</title>
+    <link rel="stylesheet" href="{% static 'css/agregar_producto.css' %}">
+ 
+</head>
+<body>
+    <h1>Agregar Nuevo Producto</h1> 
+
+{% block content %}
+
+    <form action="/agregar_producto/" method="POST">
+        {% csrf_token %}
+        {{form}}
+
+        <button>
+            save
+        </button>
+
+    </form>
+{% endblock %}    
+</body>
+</html>

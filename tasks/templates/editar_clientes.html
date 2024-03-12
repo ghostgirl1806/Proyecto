@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar clientes</title>
+    {% extends 'base.html' %}
+</head>
+<body>
+    <h1>Editar clientes</h1>
+    {% block content %}
+      {{error}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Modificacion</button>
+    </form>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Recuperar Contraseña</h2>
+{{user}}
+    <form action="/recuperar/" method="POST" class="text-center">
+        {% csrf_token %} 
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+        <button> ENVIAR</button>
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de clientes</title>
+</head>
+<body>
+    <h1>Lista de clientes</h1>
+    <form method="post" action="{% url 'lista_clientess' %}">
+        {% csrf_token %}
+        <input type="text" name="q" placeholder="Buscar clientes..." value="nombre">
+        <button type="submit">Buscar</button>
+    </form>
+    {% for cliente in clientes %}
+        <p> clientes: {{ cliente.id }} - clientes: {{cliente.cedula}} - clientes: {{cliente.nombres}} - clientes: {{cliente.apellidos}} - clientes: {{cliente.direccion}} - clientes: {{cliente.telefono}}  - clientes: {{cliente.gmail}} </p>
+
+    <form action="{% url 'agregar_cliente' clientes.id %}" method="POST">
+        {% csrf_token %}
+        <button>     
+        agregar
+        </button>
+    </form>
+    <form action="{% url 'eliminar_clientes' clientes.id %}" method="POST">
+        {% csrf_token %}
+        <button>Eliminar</button>
+    </form>
+    {% endfor %}
+    <form action="/">
+        <button>Volver</button>
+    </form>
+</body>
+</html>
+    </form>
+</body>
+</html>

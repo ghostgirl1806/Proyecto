@@ -1,0 +1,51 @@
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/inicio_Sesion.css' %}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Classic Login Form Example</title>
+  <link href="https://fonts.googleapis.com/css?family=Assistant:400,700" rel="stylesheet">
+  <div class="header_logo">
+    <img width="150" src="{% static 'css/logo_transparent.png' %}" >
+  </div>
+
+</head>
+<body>
+
+  {% block img %}
+  {% endblock %}
+
+    {% block content %}
+
+
+    {{error}}
+  <!-- partial:index.partial.html -->
+  <section class='login' id='login'>
+    <div class='head'>
+      <h1 class='company'>Ingresa ¡Admin!</h1>
+    </div>
+    <p class='msg'>Bienvenido, estas de vuelta</p>
+    <div class='form'>
+      <form action="/iniciarSesion/" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder='Username' class='text' id='username' required><br>
+        <input type="password" name="password" placeholder='••••••••••••••' class='password'><br>
+        <button class='btn-login' id='do-login'>Iniciar</button>
+        <a class="forgot" href="{% url 'reset_password' %}">¿olvido su contraseña?</a>
+      </form>
+    </div>
+  </section>
+  <!-- partial -->
+  <footer>
+    <p>RapidAle <span class='heart'>&hearts;</span> by Aleja Martinez(<a href='https://github.com/pxntxs'>@martinezaleja180220</a>)</p>
+    <p>Link: <a href='https://uigradients.com/#Turquoiseflow'>https://github.com/ghostgirl1806/Proyecto.git</a></p>
+  </footer>
+  <script src="{% static 'script.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Productos</title>
+    <link rel="stylesheet" href="{% static 'css/lista_productoss.css' %}">
+</head>
+<body>
+
+    <h1>Lista de productos</h1>
+    <div class="buscar">
+    <form method="post" action="{% url 'lista_productos' %}">
+        {% csrf_token %}
+        <input type="text" name="q" placeholder="Buscar productos..." value="Nombre producto">
+        <button type="submit">Buscar</button>
+    </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.codigo_producto }}</td>
+                    <td>{{ producto.nombre_producto }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>
+                        <form action="{% url 'editar_producto' producto.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Modificar</button>
+                        </form>
+                        <form action="{% url 'eliminar_producto' producto.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="class-button">
+        <button><a href="/">Volver</a></button>
+    </div>
+    
+    
+</body>
+</html>
